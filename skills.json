@@ -3,8 +3,68 @@
   "description": "Production-grade, modular Agent Skills for autonomous development, planning, prompt engineering, and Git workflows.",
   "repository": "https://github.com/luishrmc/ia",
   "author": "luishrmc",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "skills": [
+    {
+      "name": "setup-workspace",
+      "category": "setup",
+      "path": "skills/setup-workspace",
+      "description": "Configure repository issue tracker, triage label vocabulary, domain documentation layout, and context pointers."
+    },
+    {
+      "name": "shape-grilling",
+      "category": "shaping",
+      "path": "skills/shape-grilling",
+      "description": "Design-tree frontier discovery, round-based Q&A with recommended answers, and subagent fact-finding."
+    },
+    {
+      "name": "shape-domain",
+      "category": "shaping",
+      "path": "skills/shape-domain",
+      "description": "Living GLOSSARY.md maintenance and 3-criteria Architecture Decision Record (ADR) generation."
+    },
+    {
+      "name": "shape-grill",
+      "category": "shaping",
+      "path": "skills/shape-grill",
+      "description": "Stateful design grilling orchestrator composing shape-grilling and shape-domain inline."
+    },
+    {
+      "name": "shape-spec",
+      "category": "shaping",
+      "path": "skills/shape-spec",
+      "description": "Zero-interview specification synthesis, public test seam confirmation, and path-free spec publishing."
+    },
+    {
+      "name": "shape-tickets",
+      "category": "shaping",
+      "path": "skills/shape-tickets",
+      "description": "Tracer-bullet vertical slice DAG decomposition, Expand-Contract sequencing, and blocker wiring."
+    },
+    {
+      "name": "dev-tdd",
+      "category": "execution",
+      "path": "skills/dev-tdd",
+      "description": "Test-first red-green vertical slice loop at pre-agreed public seams."
+    },
+    {
+      "name": "dev-implement",
+      "category": "execution",
+      "path": "skills/dev-implement",
+      "description": "Single-ticket execution loop bridging git-branch-lifecycle, dev-tdd, review-diff, git-commit-stager, and git-safety-guard."
+    },
+    {
+      "name": "dev-parallel",
+      "category": "execution",
+      "path": "skills/dev-parallel",
+      "description": "Parallel worktree orchestrator for multi-ticket specs across unblocked DAG frontiers."
+    },
+    {
+      "name": "review-diff",
+      "category": "review",
+      "path": "skills/review-diff",
+      "description": "Two-axis diff review spawning parallel fresh-context subagents for Standards (Fowler smells) and Spec compliance."
+    },
     {
       "name": "plan-agents",
       "category": "planning",
