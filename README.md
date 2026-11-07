@@ -1,107 +1,107 @@
-# AI — Universal Agent Skills Suite
+# AI: Agent Skills
 
 [![Version](https://img.shields.io/badge/release-v2.0.0-blue.svg)](skills.json)
-[![Skills](https://img.shields.io/badge/skills-29%20modular%20skills-brightgreen.svg)](#-master-skill-catalog)
-[![Architecture](https://img.shields.io/badge/architecture-Two--Load%20%26%20Progressive%20Disclosure-indigo.svg)](#-architectural-pillars)
-[![Compatibility](https://img.shields.io/badge/compatibility-Antigravity%20%7C%20Claude%20Code%20%7C%20Codex%20%7C%20Cursor-orange.svg)](#-quickstart--installation)
+[![Skills](https://img.shields.io/badge/skills-29%20modular%20skills-brightgreen.svg)](#skill-catalog)
+[![Architecture](https://img.shields.io/badge/architecture-Two--Load%20%26%20Progressive%20Disclosure-indigo.svg)](#architecture)
+[![Compatibility](https://img.shields.io/badge/compatibility-Antigravity%20%7C%20Claude%20Code%20%7C%20Codex%20%7C%20Cursor-orange.svg)](#installation)
 [![License](https://img.shields.io/badge/license-MIT-purple.svg)](LICENSE)
 
-A production-grade suite of **29 composable Agent Skills** implementing an end-to-end software engineering workflow (`Idea -> Domain Model -> Spec -> Tracer-Bullet Tickets -> Seam TDD -> Two-Axis Review -> Verified Commit`), deep module architecture analysis, disciplined bug diagnosis, multi-agent planning, and prompt engineering.
+A collection of 29 modular `SKILL.md` definitions for coding agents in Antigravity, Claude Code, Codex, and Cursor. It provides structured workflows for requirement shaping, specification writing, vertical ticket slicing, test-driven implementation, two-axis diff review, and Git commit verification.
 
 ---
 
-## 🏛️ Architectural Pillars
+## Architecture
 
-### 1. The Two-Load Economy (`User-Invoked` vs. `Model-Invoked`)
+### 1. Invocation Split (`User-Invoked` vs. `Model-Invoked`)
 
-Every skill in this repository is partitioned along a strict invocation boundary to protect the agent's context window:
+Skills are divided by who can invoke them to limit unnecessary context window usage:
 
-- **User-Invoked Orchestrators (`disable-model-invocation: true`)**: Workflow entry points reachable only when the developer types `/skill-name` (e.g., `/shape-grill`, `/shape-spec`, `/shape-tickets`, `/dev-implement`, `/dev-parallel`, `/arch-survey`, `/router-skills`). They impose **zero permanent context load** on the model; human cognitive load is handled by the `/router-skills` router.
-- **Model-Invoked Disciplines (Default)**: Reusable engineering capabilities (`shape-grilling`, `shape-domain`, `dev-tdd`, `review-diff`, `arch-design`, `debug-loop`, `git-safety-guard`) with front-loaded trigger pointers in their YAML `description`. They can be reached autonomously by the agent or composed by user-invoked orchestrators.
+- **User-Invoked Skills (`disable-model-invocation: true`)**: Workflow entry points triggered only when the user types `/skill-name` (such as `/shape-grill`, `/shape-spec`, `/shape-tickets`, `/dev-implement`, `/dev-parallel`, `/arch-survey`, and `/router-skills`). Because the model does not auto-discover them, their descriptions are excluded from the permanent context window.
+- **Model-Invoked Skills (Default)**: Reusable procedures (`shape-grilling`, `shape-domain`, `dev-tdd`, `review-diff`, `arch-design`, `debug-loop`, `git-safety-guard`) with trigger conditions in their YAML `description`. They can be called automatically by the model or invoked by a user-invoked skill.
 
 ### 2. Progressive Disclosure (`<150 Lines` Per Root `SKILL.md`)
 
-Every root `SKILL.md` in this repository is strictly under **90 lines** (enforcing a hard ceiling of `<150 lines`). Ordered execution steps and completion criteria sit at the top of `SKILL.md`, while templates, JSON schemas, Fowler code smell baselines, HTML report scaffolds, and non-interactive bash utilities live behind context pointers in `references/`, `assets/`, and `scripts/`.
+Each root `SKILL.md` is kept under 90 lines (with a hard repository limit of 150 lines). The root file holds ordered execution steps and completion criteria, while templates, JSON schemas, code smell checklists, HTML report layouts, and shell scripts are stored in `references/`, `assets/`, and `scripts/` and loaded only when needed.
 
-### 3. The Main Flow & 5-Stage Git/TDD Pipeline
+### 3. Main Flow and 5-Stage Git Pipeline
 
-Conversational shaping stays inside a single unbroken context window (within the ~150k token smart zone), then transitions across a clean phase boundary into isolated per-ticket execution:
+Requirement shaping runs in a single context window (`shape-grill` -> `shape-spec` -> `shape-tickets`). Once tickets are written to the issue tracker or `.scratch/`, each ticket is implemented in an isolated context window:
 
 ```text
 [1. /setup-workspace] ──► Configures docs/agents/*, GLOSSARY.md, and docs/adr/
           │
           ▼
-[2. /shape-grill]     ──► Composes shape-grilling + shape-domain (inline GLOSSARY.md & ADRs)
+[2. /shape-grill]     ──► Runs shape-grilling + shape-domain (updates GLOSSARY.md & ADRs)
           │
           ▼
-[3. /shape-spec]      ──► Synthesizes path-free spec and confirms public test seams
+[3. /shape-spec]      ──► Writes path-free spec and confirms public test seams
           │
           ▼
-[4. /shape-tickets]   ──► Slices tracer-bullet vertical tickets (or Expand-Contract batches)
+[4. /shape-tickets]   ──► Creates vertical slice tickets (or Expand-Contract batches)
           │
           ╠══► Single Ticket: /dev-implement
-          ║      ├─ Stage 1: git-branch-lifecycle (sync base & create collision-free branch)
-          ║      ├─ Stage 2: dev-tdd (red -> green vertical slices at confirmed public seams)
-          ║      ├─ Stage 3: review-diff (parallel Standards + Spec fresh-context subagents)
-          ║      ├─ Stage 4: git-commit-stager (explicit pathspec staging & Conventional Commit)
+          ║      ├─ Stage 1: git-branch-lifecycle (syncs base & creates task branch)
+          ║      ├─ Stage 2: dev-tdd (red -> green vertical slices at public seams)
+          ║      ├─ Stage 3: review-diff (parallel Standards + Spec subagent review)
+          ║      ├─ Stage 4: git-commit-stager (explicit pathspec staging & commit manifest)
           ║      └─ Stage 5: git-safety-guard (secret scan, stash-isolated tests, git commit)
           ║
-          ╚══► Multi-Ticket DAG: /dev-parallel (parallel git worktree implementer subagents)
+          ╚══► Multi-Ticket DAG: /dev-parallel (parallel git worktree subagents)
 ```
 
 ---
 
-## 📦 Master Skill Catalog
+## Skill Catalog
 
-All **29 skills** follow strict functional prefix naming (`router-*`, `setup-*`, `shape-*`, `research-*`, `dev-*`, `review-*`, `arch-*`, `debug-*`, `env-*`, `plan-*`, `refine-*`, `gen-*`, `git-*`):
+All 29 skills use functional prefix naming (`router-*`, `setup-*`, `shape-*`, `research-*`, `dev-*`, `review-*`, `arch-*`, `debug-*`, `env-*`, `plan-*`, `refine-*`, `gen-*`, `git-*`):
 
 | Skill Slug | Invocation / Command | Category | Core Purpose & Workflow Role |
 | :--- | :--- | :--- | :--- |
-| [`router-skills`](skills/router-skills/SKILL.md) | User (`/router-skills`) | `routing` | Cognitive-load router mapping developer goals to the right flow and phase boundary rule. |
-| [`setup-workspace`](skills/setup-workspace/SKILL.md) | User (`/setup-workspace`) | `setup` | Scaffolds `docs/agents/issue-tracker.md`, `GLOSSARY.md`, `docs/adr/`, and steering pointers. |
-| [`shape-grill`](skills/shape-grill/SKILL.md) | User (`/shape-grill`) | `shaping` | Stateful design interrogation composing `shape-grilling` and `shape-domain` inline. |
-| [`shape-grilling`](skills/shape-grilling/SKILL.md) | Model *(Internal)* | `shaping` | Walks the design tree frontier in rounds (`❓ Q1` / `➡️ Recommended`) and dispatches subagents for codebase facts. |
-| [`shape-domain`](skills/shape-domain/SKILL.md) | Model *(Internal)* | `shaping` | Challenges overloaded terms, updates `GLOSSARY.md` inline, and gates ADRs by 3 criteria. |
-| [`shape-spec`](skills/shape-spec/SKILL.md) | User (`/shape-spec`) | `shaping` | Zero-interview synthesis of agreed thread into a path-free spec with confirmed public test seams. |
-| [`shape-tickets`](skills/shape-tickets/SKILL.md) | User (`/shape-tickets`) | `shaping` | Decomposes specs into context-window-sized tracer-bullet vertical slices with blocking DAG edges. |
-| [`shape-wayfinder`](skills/shape-wayfinder/SKILL.md) | User (`/shape-wayfinder`) | `shaping` | Charts multi-session epics across the fog of war as a `wayfinder:map` of decision tickets. |
+| [`router-skills`](skills/router-skills/SKILL.md) | User (`/router-skills`) | `routing` | Maps a task description to the appropriate skill workflow and phase boundary rule. |
+| [`setup-workspace`](skills/setup-workspace/SKILL.md) | User (`/setup-workspace`) | `setup` | Creates `docs/agents/issue-tracker.md`, `GLOSSARY.md`, `docs/adr/`, and steering file pointers. |
+| [`shape-grill`](skills/shape-grill/SKILL.md) | User (`/shape-grill`) | `shaping` | Runs `shape-grilling` and `shape-domain` to clarify requirements and update domain docs. |
+| [`shape-grilling`](skills/shape-grilling/SKILL.md) | Model *(Internal)* | `shaping` | Walks a decision tree in rounds (`❓ Q1` / `➡️ Recommended`) and uses subagents for codebase lookups. |
+| [`shape-domain`](skills/shape-domain/SKILL.md) | Model *(Internal)* | `shaping` | Resolves ambiguous domain terms, updates `GLOSSARY.md` inline, and writes ADRs in `docs/adr/`. |
+| [`shape-spec`](skills/shape-spec/SKILL.md) | User (`/shape-spec`) | `shaping` | Synthesizes conversation decisions into a specification document with agreed public test seams. |
+| [`shape-tickets`](skills/shape-tickets/SKILL.md) | User (`/shape-tickets`) | `shaping` | Splits a specification into vertical slice tickets with explicit blocking dependencies. |
+| [`shape-wayfinder`](skills/shape-wayfinder/SKILL.md) | User (`/shape-wayfinder`) | `shaping` | Tracks multi-session planning efforts as a `wayfinder:map` issue with child decision tickets. |
 | [`shape-prototype`](skills/shape-prototype/SKILL.md) | Model *(Auto)* | `shaping` | Builds throwaway single-file HTML state simulators (`logic.md`) or multi-variant UI routes (`ui.md`). |
-| [`research-topic`](skills/research-topic/SKILL.md) | Model *(Auto)* | `navigation` | Dispatches a fresh-context background subagent to verify claims against primary sources and write cited Markdown. |
-| [`dev-implement`](skills/dev-implement/SKILL.md) | User (`/dev-implement`) | `execution` | Executes a single ticket end-to-end through the 5-stage Git, seam TDD, and two-axis review pipeline. |
-| [`dev-parallel`](skills/dev-parallel/SKILL.md) | User (`/dev-parallel`) | `execution` | Implements a multi-ticket spec on an integration branch using parallel worktree subagents across the DAG frontier. |
-| [`dev-tdd`](skills/dev-tdd/SKILL.md) | Model *(Internal)* | `execution` | Enforces test-first red-green vertical slices at public seams; rejects implementation-coupled and tautological tests. |
-| [`review-diff`](skills/review-diff/SKILL.md) | Model *(Auto)* | `review` | Spawns two parallel fresh-context subagents to audit diffs across **Standards** (repo rules + 12 Fowler smells) and **Spec** axes. |
-| [`arch-design`](skills/arch-design/SKILL.md) | Model *(Internal)* | `architecture` | Canonical deep-module vocabulary (*Module*, *Interface*, *Depth*, *Seam*, *Adapter*, *Leverage*, *Locality*) and Design-It-Twice pattern. |
-| [`arch-survey`](skills/arch-survey/SKILL.md) | User (`/arch-survey`) | `architecture` | Scans high-churn modules with the deletion test, renders a Tailwind/Mermaid HTML report in `$TMPDIR`, and grills on candidates. |
-| [`debug-loop`](skills/debug-loop/SKILL.md) | Model *(Auto)* | `debugging` | Enforces a gated 6-phase bug diagnosis discipline built on a 10-tier reproducible red feedback loop. |
-| [`env-retro`](skills/env-retro/SKILL.md) | User (`/env-retro`) | `environment` | Audits completed sessions across 7 environment categories to upgrade pointers, checks, and `CODING_STANDARDS.md`. |
-| [`env-handoff`](skills/env-handoff/SKILL.md) | User (`/env-handoff`) | `environment` | Serializes active session context pointers into `$TMPDIR` for cross-harness or cross-directory continuation. |
-| [`plan-agents`](skills/plan-agents/SKILL.md) | User (`/plan-agents`) | `planning` | Synthesizes bounded ($N \le 5$) multi-agent topologies with least-privilege tool isolation. |
-| [`plan-hooks`](skills/plan-hooks/SKILL.md) | User (`/plan-hooks`) | `planning` | Designs pre-step interceptors, mid-execution telemetry, post-step verifiers, and loop convergence gates. |
-| [`plan-instruction`](skills/plan-instruction/SKILL.md) | User (`/plan-instruction`) | `planning` | Compiles repository conventions and planning outputs into a concise, pointer-driven `GEMINI.md` / `AGENTS.md`. |
-| [`refine-prompt`](skills/refine-prompt/SKILL.md) | Model *(Auto)* | `refinement` | Dual-mode prompt optimizer producing interactive Markdown prompts or type-safe Pydantic application code. |
-| [`refine-skill`](skills/refine-skill/SKILL.md) | User (`/refine-skill`) | `refinement` | Audits, prunes, and calibrates `SKILL.md` specifications using unified diffs and writing-for-agents mechanics. |
-| [`refine-text`](skills/refine-text/SKILL.md) | Model *(Auto)* | `refinement` | Enforces clear, direct, and hype-free prose grounded in concrete mechanisms and standard punctuation. |
-| [`gen-skill`](skills/gen-skill/SKILL.md) | User (`/gen-skill`) | `refinement` | Architects and generates new modular `SKILL.md` packages under 150 lines with disclosed references. |
-| [`git-branch-lifecycle`](skills/git-branch-lifecycle/SKILL.md) | Model *(Internal)* | `git` | Stage 1 Git skill: verifies clean tree, fast-forwards canonical base branch, and creates collision-free task branches. |
-| [`git-commit-stager`](skills/git-commit-stager/SKILL.md) | Model *(Internal)* | `git` | Stage 4 Git skill: stages modified files strictly by explicit pathspec and drafts Conventional Commit manifests. |
-| [`git-safety-guard`](skills/git-safety-guard/SKILL.md) | Model *(Internal)* | `git` | Stage 5 Git gatekeeper: scans staged diffs for secrets/binaries, runs stash-isolated tests, and executes `git commit`. |
+| [`research-topic`](skills/research-topic/SKILL.md) | Model *(Auto)* | `navigation` | Runs a fresh-context background subagent to check primary sources and write a cited Markdown note. |
+| [`dev-implement`](skills/dev-implement/SKILL.md) | User (`/dev-implement`) | `execution` | Implements a single ticket through the 5-stage Git, TDD, and diff review pipeline. |
+| [`dev-parallel`](skills/dev-parallel/SKILL.md) | User (`/dev-parallel`) | `execution` | Implements a multi-ticket spec on an integration branch using parallel git worktree subagents. |
+| [`dev-tdd`](skills/dev-tdd/SKILL.md) | Model *(Internal)* | `execution` | Runs red-green vertical slice loops at public module seams and avoids implementation-coupled tests. |
+| [`review-diff`](skills/review-diff/SKILL.md) | Model *(Auto)* | `review` | Runs two parallel subagents to review diffs against repo **Standards** (plus Fowler code smells) and the **Spec**. |
+| [`arch-design`](skills/arch-design/SKILL.md) | Model *(Internal)* | `architecture` | Defines module design terms (*Module*, *Interface*, *Depth*, *Seam*, *Adapter*, *Leverage*, *Locality*) and the Design-It-Twice pattern. |
+| [`arch-survey`](skills/arch-survey/SKILL.md) | User (`/arch-survey`) | `architecture` | Scans high-churn files for shallow modules, writes an HTML report to `$TMPDIR`, and interviews on candidates. |
+| [`debug-loop`](skills/debug-loop/SKILL.md) | Model *(Auto)* | `debugging` | Guides bug diagnosis through a 6-phase loop starting with an automated red reproduction command. |
+| [`env-retro`](skills/env-retro/SKILL.md) | User (`/env-retro`) | `environment` | Reviews a completed session across 7 categories to update pointers, linter checks, and `CODING_STANDARDS.md`. |
+| [`env-handoff`](skills/env-handoff/SKILL.md) | User (`/env-handoff`) | `environment` | Writes session context pointers to `$TMPDIR` for continuing work in another directory or tool. |
+| [`plan-agents`](skills/plan-agents/SKILL.md) | User (`/plan-agents`) | `planning` | Designs multi-agent workflows with bounded iteration limits ($N \le 5$) and per-role tool allowlists. |
+| [`plan-hooks`](skills/plan-hooks/SKILL.md) | User (`/plan-hooks`) | `planning` | Specifies pre-step checks, mid-execution telemetry, post-step verifiers, and loop termination gates. |
+| [`plan-instruction`](skills/plan-instruction/SKILL.md) | User (`/plan-instruction`) | `planning` | Generates a concise, pointer-based `GEMINI.md` or `AGENTS.md` file from repository conventions. |
+| [`refine-prompt`](skills/refine-prompt/SKILL.md) | Model *(Auto)* | `refinement` | Restructures draft prompts into delimited Markdown instructions or Pydantic structured-output code. |
+| [`refine-skill`](skills/refine-skill/SKILL.md) | User (`/refine-skill`) | `refinement` | Audits and prunes `SKILL.md` files using unified diffs. |
+| [`refine-text`](skills/refine-text/SKILL.md) | Model *(Auto)* | `refinement` | Edits prose for direct phrasing, active verbs, and standard punctuation. |
+| [`gen-skill`](skills/gen-skill/SKILL.md) | User (`/gen-skill`) | `refinement` | Scaffolds new `SKILL.md` packages under 150 lines with supporting `references/` files. |
+| [`git-branch-lifecycle`](skills/git-branch-lifecycle/SKILL.md) | Model *(Internal)* | `git` | Stage 1 Git skill: checks working tree state, fast-forwards the base branch, and creates a task branch. |
+| [`git-commit-stager`](skills/git-commit-stager/SKILL.md) | Model *(Internal)* | `git` | Stage 4 Git skill: stages modified files by explicit pathspec and writes `.agent/commit-staging-manifest.json`. |
+| [`git-safety-guard`](skills/git-safety-guard/SKILL.md) | Model *(Internal)* | `git` | Stage 5 Git skill: checks staged diffs for secrets and binaries, runs tests in an isolated stash, and runs `git commit`. |
 
 ---
 
-## ⚡ Quickstart & Installation
+## Installation
 
-### Option 1: One-Line Global Install (Copy Mode)
+### Option 1: Global Copy Install
 
-Install all 29 skills into your global Antigravity / Gemini CLI environment (`~/.gemini/config/skills/`):
+Copy all 29 skills into `~/.gemini/config/skills/`:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/luishrmc/ai/main/install.sh | bash
 ```
 
-### Option 2: Clone & Symlink (Recommended for Active Development)
+### Option 2: Clone and Symlink
 
-Clone the repository and symlink all skills globally so `git pull` updates reflect immediately across every workspace:
+Clone the repository and create symlinks so `git pull` updates apply immediately:
 
 ```bash
 git clone https://github.com/luishrmc/ai.git ~/me/ai
@@ -109,19 +109,19 @@ cd ~/me/ai
 ./install.sh --symlink
 ```
 
-### Option 3: Target-Specific & Project-Level Installation
+### Option 3: Compatibility and Target Flags
 
-Use `./install.sh` or `Makefile` presets for any agent harness:
+Use `./install.sh` or `Makefile` targets to install into specific directories:
 
-| Agent Harness | Target Path | Installer Command | Makefile Shortcut |
+| Environment | Target Path | Installer Command | Makefile Target |
 | :--- | :--- | :--- | :--- |
 | **Antigravity / Gemini CLI (`agy`)** | `~/.gemini/config/skills/` | `./install.sh --global-gemini --symlink` | `make link-global` |
 | **Claude Code** | `~/.claude/skills/` | `./install.sh --global-claude --symlink` | `make link-claude` |
-| **Project Workspace (`.agents/skills/`)** | `<repo>/.agents/skills/` | `./install.sh --project-agents` | `make install-project` |
-| **Selective Skill Install** | Custom or default | `./install.sh router-skills shape-grill dev-implement` | - |
+| **Project Directory (`.agents/skills/`)** | `<repo>/.agents/skills/` | `./install.sh --project-agents` | `make install-project` |
+| **Selected Skills Only** | Custom or default | `./install.sh router-skills shape-grill dev-implement` | - |
 
 ---
 
-## 📄 License
+## License
 
 MIT © [Luis Henrique](https://github.com/luishrmc)
