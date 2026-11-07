@@ -3,8 +3,14 @@
   "description": "Production-grade, modular Agent Skills for autonomous development, planning, prompt engineering, and Git workflows.",
   "repository": "https://github.com/luishrmc/ia",
   "author": "luishrmc",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "skills": [
+    {
+      "name": "router-skills",
+      "category": "routing",
+      "path": "skills/router-skills",
+      "description": "Cognitive-load router mapping user intent across shaping, execution, architecture, debugging, planning, git, and academic workflows."
+    },
     {
       "name": "setup-workspace",
       "category": "setup",
@@ -42,6 +48,24 @@
       "description": "Tracer-bullet vertical slice DAG decomposition, Expand-Contract sequencing, and blocker wiring."
     },
     {
+      "name": "shape-wayfinder",
+      "category": "shaping",
+      "path": "skills/shape-wayfinder",
+      "description": "Multi-session epic planner charting wayfinder:map decision tickets across complex fog-of-war."
+    },
+    {
+      "name": "shape-prototype",
+      "category": "shaping",
+      "path": "skills/shape-prototype",
+      "description": "Rapid logic and UI validator scaffolding single-file HTML state simulators or multi-variant routes."
+    },
+    {
+      "name": "research-topic",
+      "category": "navigation",
+      "path": "skills/research-topic",
+      "description": "Primary-source research investigator dispatching a fresh-context background subagent to verify APIs/docs and output cited markdown."
+    },
+    {
       "name": "dev-tdd",
       "category": "execution",
       "path": "skills/dev-tdd",
@@ -64,6 +88,36 @@
       "category": "review",
       "path": "skills/review-diff",
       "description": "Two-axis diff review spawning parallel fresh-context subagents for Standards (Fowler smells) and Spec compliance."
+    },
+    {
+      "name": "arch-design",
+      "category": "architecture",
+      "path": "skills/arch-design",
+      "description": "Deep module vocabulary (Interface, Depth, Seam, Locality), dependency deepening guide, and Design-It-Twice pattern."
+    },
+    {
+      "name": "arch-survey",
+      "category": "architecture",
+      "path": "skills/arch-survey",
+      "description": "Deletion-test codebase scanner generating Mermaid/HTML architecture reports in $TMPDIR and feeding candidates to /shape-grill."
+    },
+    {
+      "name": "debug-loop",
+      "category": "debugging",
+      "path": "skills/debug-loop",
+      "description": "Gated 6-phase deterministic red feedback loop discipline for hard bugs, flakes, and performance regressions."
+    },
+    {
+      "name": "env-retro",
+      "category": "environment",
+      "path": "skills/env-retro",
+      "description": "Post-session retrospective across 7 environment categories converting mechanical failures into checks and guidelines into standards."
+    },
+    {
+      "name": "env-handoff",
+      "category": "environment",
+      "path": "skills/env-handoff",
+      "description": "Session context compactor serializing working pointers into $TMPDIR without duplicating persisted project artifacts."
     },
     {
       "name": "plan-agents",
