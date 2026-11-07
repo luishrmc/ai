@@ -27,7 +27,7 @@ Evaluate the session for concrete environment upgrades across these seven levers
 4. **Steering File Bloat (`GEMINI.md` / `AGENTS.md`)**: Are always-loaded steering files carrying bulky rules or stale command caches that should move into `CODING_STANDARDS.md`, automated checks, or disclosed `docs/agents/*.md` files?
 5. **Tool Economy**: Did the agent run token-heavy or repetitive shell commands that a compact helper script in `scripts/` would streamline?
 6. **No-Op Sediment**: Identify instructions in steering files or skills that repeat default model behavior and recommend deleting them via `/refine-skill`.
-7. **Information Access**: Was the agent flying blind because dev server logs, build outputs (`latex-build`), or schema definitions were inaccessible? Propose a read-only tee or inspection script.
+7. **Information Access**: Was the agent flying blind because dev server logs, test runner outputs, or schema definitions were inaccessible? Propose a read-only tee or inspection script.
 
 ### 3. Present Ranked Environment Upgrades
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# Universal Agent Skills Installer (IA)
-# https://github.com/luishrmc/ia
+# Universal Agent Skills Installer (AI)
+# https://github.com/luishrmc/ai
 # ==============================================================================
 set -euo pipefail
 
@@ -14,7 +14,7 @@ RED="\033[0;31m"
 CYAN="\033[0;36m"
 RESET="\033[0m"
 
-REPO_URL="https://github.com/luishrmc/ia.git"
+REPO_URL="https://github.com/luishrmc/ai.git"
 DEFAULT_GLOBAL_TARGET="$HOME/.gemini/config/skills"
 TARGET_DIR=""
 MODE="copy" # "copy" or "symlink"
@@ -35,7 +35,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" 2>/dev/null && pwd || echo
 if [ -z "$SCRIPT_DIR" ] || [ ! -d "$SCRIPT_DIR/skills" ]; then
   # Executed via pipe (curl | bash)
   echo -e "${CYAN}==>${RESET} Detected pipe execution. Cloning repository to temporary workspace..."
-  TEMP_DIR="$(mktemp -d /tmp/ia-skills-XXXXXX)"
+  TEMP_DIR="$(mktemp -d /tmp/ai-skills-XXXXXX)"
   git clone --depth 1 -q "$REPO_URL" "$TEMP_DIR"
   SKILLS_SOURCE="$TEMP_DIR/skills"
 else
@@ -44,7 +44,7 @@ fi
 
 usage() {
   cat << EOF
-${BOLD}Universal Agent Skills Installer${RESET}
+${BOLD}Universal Agent Skills Installer (AI)${RESET}
 
 Usage:
   ./install.sh [options] [skill1 skill2 ...]
@@ -67,7 +67,7 @@ Preset Targets:
 Examples:
   ./install.sh                                 # Install all skills globally (copy)
   ./install.sh --symlink                       # Symlink all skills globally
-  ./install.sh refine-prompt plan-agents       # Install only selected skills
+  ./install.sh shape-grill dev-implement       # Install only selected skills
   ./install.sh --project-agents                # Install all skills into current project
   ./install.sh -t ~/my-agent-skills -s         # Symlink all skills into custom dir
 EOF
@@ -75,7 +75,7 @@ EOF
 }
 
 list_skills() {
-  echo -e "${BOLD}Available Agent Skills in IA:${RESET}\n"
+  echo -e "${BOLD}Available Agent Skills in AI:${RESET}\n"
   for skill_dir in "$SKILLS_SOURCE"/*; do
     if [ -d "$skill_dir" ]; then
       skill_name="$(basename "$skill_dir")"

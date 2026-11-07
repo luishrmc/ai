@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # Steering File Architect (`GEMINI.md` / `AGENTS.md`)
 
-Compile workspace conventions and planning outputs from `plan-agents`, `plan-skill`, and `plan-hooks` into a high-signal, low-context-load `GEMINI.md`, `AGENTS.md`, or `CLAUDE.md` steering file.
+Compile workspace conventions and planning outputs from `plan-agents`, `router-skills`, and `plan-hooks` into a high-signal, low-context-load `GEMINI.md`, `AGENTS.md`, or `CLAUDE.md` steering file.
 
 ## Context Load & Pointer Principles
 
@@ -28,7 +28,7 @@ Every line in `GEMINI.md` / `AGENTS.md` sits permanently in the agent's context 
 Consolidate outputs from prior planning skills if present in the session or repository:
 
 1. **Agent Topology (from `plan-agents`)**: Role boundaries, fresh-context subagent rules, and loop convergence caps ($N \le 5$).
-2. **Skill Map (from `plan-skill`)**: Active user-invoked orchestrators (`/shape-grill`, `/shape-spec`, `/shape-tickets`, `/dev-implement`, `/dev-parallel`) and model-invoked disciplines (`dev-tdd`, `review-diff`, `git-safety-guard`).
+2. **Skill Routing (from `router-skills`)**: Active user-invoked orchestrators (`/shape-grill`, `/shape-spec`, `/shape-tickets`, `/dev-implement`, `/dev-parallel`) and model-invoked disciplines (`dev-tdd`, `review-diff`, `git-safety-guard`).
 3. **Runtime Guardrails (from `plan-hooks`)**: Pre-step and post-step verification gates.
 
 ## Target Steering File Blueprint
@@ -63,6 +63,6 @@ Keep the generated steering file compact (under 100 lines) using this five-secti
 
 ## Verification Checklist
 
-- [ ] References `plan-agents`, `plan-skill`, and `plan-hooks` accurately where applicable.
+- [ ] References `plan-agents`, `router-skills`, and `plan-hooks` accurately where applicable.
 - [ ] Uses context pointers to `GLOSSARY.md`, `docs/adr/`, and `docs/agents/*` rather than inlining large reference blocks.
 - [ ] Keeps total steering file length under 100 lines with zero em-dashes or en-dashes.

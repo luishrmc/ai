@@ -1,12 +1,12 @@
 ---
 name: router-skills
-description: "Route your current engineering, shaping, architecture, git, or academic task to the right skill or workflow in this repository."
+description: "Route your current engineering, shaping, architecture, debugging, planning, or git task to the right skill or workflow in this repository."
 disable-model-invocation: true
 ---
 
 # Workspace Skill & Workflow Router
 
-Navigate the 32 modular skills in this repository without memorizing every slash command. Before recommending that a user skip a step or describing a skill's internals, read that skill's `SKILL.md` directly.
+Navigate the 29 modular skills in this repository without memorizing every slash command. Before recommending that a user skip a step or describing a skill's internals, read that skill's `SKILL.md` directly.
 
 ## 1. The Main Flow (`Idea -> Ship`)
 
@@ -30,9 +30,9 @@ The primary software delivery spine. Keep steps 1 to 3 in **one unbroken context
 | **Codebase feels shallow or tangled** | **`/arch-survey`** + **`arch-design`** | Scans high-churn modules with the deletion test, renders an HTML report in `$TMPDIR`, and grills on candidates. |
 | **Review a branch or diff standalone** | **`review-diff`** *(Model-invoked)* | Spawns parallel **Standards** (repo rules + Fowler smells) and **Spec** review subagents. |
 | **Switch harness, directory, or session** | **`/env-handoff`** | Compacts session pointers into `$TMPDIR` without duplicating repo files. |
-| **Design multi-agent loops, hooks, or `GEMINI.md`** | **`/plan-skill`** -> **`/plan-agents`** -> **`/plan-hooks`** -> **`/plan-instruction`** | Architects bounded ($N \le 5$) multi-agent systems and pointer-driven steering files. |
+| **Design multi-agent loops, hooks, or `GEMINI.md`** | **`/plan-agents`** -> **`/plan-hooks`** -> **`/plan-instruction`** | Architects bounded ($N \le 5$) multi-agent systems and pointer-driven steering files. |
 | **Optimize prompts, prose, or `SKILL.md` files** | **`refine-prompt`**, **`refine-text`**, **`/gen-skill`**, **`/refine-skill`** | Dual-mode prompt engineering (Markdown/Pydantic), hype-free prose, and skill authoring/pruning. |
-| **Academic LaTeX authoring & verification** | **`latex-writer`** + **`latex-build`** | Drafts rigorous `.tex` sections and runs non-interactive `latexmk` verification into `out/`. |
+| **Stage and verify Git commits safely** | **`git-branch-lifecycle`** -> **`git-commit-stager`** -> **`git-safety-guard`** | Enforces clean base sync, explicit pathspec staging, secret scanning, and stash-isolated test gates. |
 
 ## 3. Managing Phase Boundaries
 

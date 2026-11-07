@@ -1,15 +1,15 @@
 {
-  "name": "luishrmc/ia",
-  "description": "Production-grade, modular Agent Skills for autonomous development, planning, prompt engineering, and Git workflows.",
-  "repository": "https://github.com/luishrmc/ia",
+  "name": "luishrmc/ai",
+  "description": "Production-grade, modular Agent Skills suite implementing The Main Flow, Two-Load Economy, Progressive Disclosure, and 5-Stage Git & TDD Governance.",
+  "repository": "https://github.com/luishrmc/ai",
   "author": "luishrmc",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "skills": [
     {
       "name": "router-skills",
       "category": "routing",
       "path": "skills/router-skills",
-      "description": "Cognitive-load router mapping user intent across shaping, execution, architecture, debugging, planning, git, and academic workflows."
+      "description": "Cognitive-load router mapping user intent across shaping, execution, architecture, debugging, planning, refinement, and git workflows."
     },
     {
       "name": "setup-workspace",
@@ -123,25 +123,19 @@
       "name": "plan-agents",
       "category": "planning",
       "path": "skills/plan-agents",
-      "description": "Synthesize production-ready, loop-based multi-agent architectures with deterministic gates and tool isolation."
+      "description": "Synthesize loop-based multi-agent architectures with deterministic convergence gates, least-privilege tool isolation, and GEMINI.md pointers."
     },
     {
       "name": "plan-hooks",
       "category": "planning",
       "path": "skills/plan-hooks",
-      "description": "Design and recommend lifecycle hooks, validation interceptors, telemetry monitors, and convergence gates."
+      "description": "Design deterministic lifecycle hooks, validation interceptors, telemetry monitors, and loop convergence gates for agent workflows."
     },
     {
       "name": "plan-instruction",
       "category": "planning",
       "path": "skills/plan-instruction",
-      "description": "Synthesize workspace reality and PLAN specifications into an authoritative GEMINI.md / AGENTS.md instruction file."
-    },
-    {
-      "name": "plan-skill",
-      "category": "planning",
-      "path": "skills/plan-skill",
-      "description": "Evaluate project scope and recommend a prioritized, loop-aligned suite of modular skills."
+      "description": "Synthesize repository conventions and planning artifacts into a concise, pointer-driven GEMINI.md or AGENTS.md steering file."
     },
     {
       "name": "refine-prompt",
@@ -153,49 +147,37 @@
       "name": "refine-skill",
       "category": "refinement",
       "path": "skills/refine-skill",
-      "description": "Audit, troubleshoot, prune, and tune existing operational SKILL.md specifications."
+      "description": "Audit, prune, and calibrate existing SKILL.md specifications using unified diffs and writing-for-agents mechanics."
     },
     {
       "name": "refine-text",
       "category": "refinement",
       "path": "skills/refine-text",
-      "description": "Enforce natural, concise, and hype-free writing across all agent responses."
+      "description": "Write clear, natural, and concise prose free of AI cliches, promotional hype, and punctuation crutches."
     },
     {
       "name": "gen-skill",
       "category": "refinement",
       "path": "skills/gen-skill",
-      "description": "End-to-end meta-skill engine for architecting and generating production-ready modular agent skills."
+      "description": "Architect, validate, and generate modular SKILL.md specifications and disclosed reference files."
     },
     {
       "name": "git-safety-guard",
       "category": "git",
       "path": "skills/git-safety-guard",
-      "description": "Security gatekeeper auditing staged diffs for secrets, running tests in isolated stashes, and executing commits."
+      "description": "Audit staged git diffs for secrets and binary artifacts, execute lint and test suites in stash-isolated worktrees, and run the final git commit."
     },
     {
       "name": "git-commit-stager",
       "category": "git",
       "path": "skills/git-commit-stager",
-      "description": "Audit modified files, stage changes by explicit pathspec, and draft validated Conventional Commits."
+      "description": "Audit dirty working trees after code modifications, stage permitted files strictly by explicit pathspec, and draft a validated Conventional Commit message."
     },
     {
       "name": "git-branch-lifecycle",
       "category": "git",
       "path": "skills/git-branch-lifecycle",
-      "description": "Audit working trees, sync base branches, create standardized feature/fix branches, and establish tracking."
-    },
-    {
-      "name": "latex-writer",
-      "category": "academic",
-      "path": "skills/latex-writer",
-      "description": "Draft and edit mathematically rigorous academic LaTeX prose for research manuscripts."
-    },
-    {
-      "name": "latex-build",
-      "category": "academic",
-      "path": "skills/latex-build",
-      "description": "Non-interactive LaTeX builds via latexmk, log stream parsing, and automated remediation patches."
+      "description": "Audit working tree cleanliness, synchronize the canonical upstream base branch, and create a collision-free feature or fix branch."
     }
   ]
 }

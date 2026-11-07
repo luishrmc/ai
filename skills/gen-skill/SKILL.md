@@ -21,7 +21,7 @@ Every generated skill must satisfy four structural invariants:
 
 ### Phase 1: Requirement & Load Analysis
 
-1. Determine the skill's functional prefix (`shape-*`, `dev-*`, `review-*`, `setup-*`, `plan-*`, `refine-*`, `git-*`, `latex-*`).
+1. Determine the skill's functional prefix (`shape-*`, `dev-*`, `review-*`, `arch-*`, `debug-*`, `env-*`, `setup-*`, `plan-*`, `refine-*`, `git-*`, `router-*`).
 2. Decide whether the skill is **User-Invoked** (zero context load, human-triggered orchestrator) or **Model-Invoked** (always-loaded description pointer, autonomous or skill-called discipline).
 3. Separate **in-file steps** (what the agent does every run) from **disclosed reference** (templates, edge-case tables, or bash scripts reached on demand).
 

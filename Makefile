@@ -1,4 +1,5 @@
-.PHONY: all list install-global link-global install-project
+# AI — Universal Agent Skills Suite (https://github.com/luishrmc/ai)
+.PHONY: all list install-global link-global install-claude link-claude install-project
 
 TARGET ?= $(HOME)/.gemini/config/skills
 
